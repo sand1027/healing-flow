@@ -100,7 +100,7 @@ export default function ServicesPage() {
     return (
         <div className="min-h-screen">
             {/* Hero Section - Minimal */}
-            <section className="section-padding border-b border-foreground/10">
+            <section className="section-padding">
                 <div className="container-custom">
                     <div className="max-w-4xl">
                         <span className="text-xs font-medium tracking-[0.2em] uppercase text-foreground/60 mb-6 block">
@@ -123,7 +123,7 @@ export default function ServicesPage() {
                 <section
                     key={service.id}
                     id={service.id}
-                    className={`section-padding ${index % 2 === 0 ? "border-b border-foreground/10" : ""}`}
+                    className="section-padding"
                 >
                     <div className="container-custom">
                         <div className={`grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center ${index % 2 === 1 ? "lg:flex-row-reverse" : ""}`}>
@@ -169,7 +169,7 @@ export default function ServicesPage() {
             ))}
 
             {/* Pricing Section - Minimal */}
-            <section className="section-padding border-b border-foreground/10">
+            <section className="section-padding">
                 <div className="container-custom">
                     <div className="max-w-4xl mb-24">
                         <span className="text-xs font-medium tracking-[0.2em] uppercase text-foreground/60 mb-6 block">

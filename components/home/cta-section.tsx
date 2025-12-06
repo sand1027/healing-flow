@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 
 export default function CTASection() {
     return (
-        <section className="section-padding border-t border-foreground/10">
+        <section className="section-padding">
             <div className="container-custom">
                 <div className="max-w-4xl mx-auto text-center space-y-12 py-20">
                     {/* Heading */}

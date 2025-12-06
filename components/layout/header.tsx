@@ -30,7 +30,7 @@ export default function Header() {
 
   return (
     <>
-      <header className="sticky top-0 z-50 w-full glass border-b border-border/40">
+      <header className="sticky top-0 z-50 w-full bg-muted/30 backdrop-blur-sm shadow-md">
         <nav className="container-custom">
           <div className="flex h-16 items-center justify-between">
             {/* Logo */}
@@ -108,16 +108,6 @@ export default function Header() {
                 {link.label}
               </Link>
             ))}
-            <div className="pt-4">
-              <Button
-                asChild
-                className="w-full text-sm font-normal tracking-wide h-12 rounded-none bg-foreground text-background hover:bg-foreground/90"
-              >
-                <Link href="/contact" onClick={() => setMobileMenuOpen(false)}>
-                  Book Session
-                </Link>
-              </Button>
-            </div>
           </div>
         </div>
       </div>

@@ -56,7 +56,7 @@ export default function AboutPage() {
     return (
         <div className="min-h-screen">
             {/* Hero Section - Minimal */}
-            <section className="section-padding border-b border-foreground/10">
+            <section className="section-padding">
                 <div className="container-custom">
                     <div className="max-w-4xl">
                         <span className="text-xs font-medium tracking-[0.2em] uppercase text-foreground/60 mb-6 block">
@@ -75,7 +75,7 @@ export default function AboutPage() {
             </section>
 
             {/* Mission Section - Minimal */}
-            <section className="section-padding border-b border-foreground/10">
+            <section className="section-padding">
                 <div className="container-custom">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
                         <div className="space-y-8">
@@ -112,7 +112,7 @@ export default function AboutPage() {
             </section>
 
             {/* Values Section - Minimal */}
-            <section className="section-padding border-b border-foreground/10">
+            <section className="section-padding">
                 <div className="container-custom">
                     <div className="max-w-4xl mb-24">
                         <span className="text-xs font-medium tracking-[0.2em] uppercase text-foreground/60 mb-6 block">
@@ -146,7 +146,7 @@ export default function AboutPage() {
             </section>
 
             {/* Team Section - Minimal */}
-            <section className="section-padding border-b border-foreground/10">
+            <section className="section-padding">
                 <div className="container-custom">
                     <div className="max-w-4xl mb-24">
                         <span className="text-xs font-medium tracking-[0.2em] uppercase text-foreground/60 mb-6 block">
@@ -185,7 +185,7 @@ export default function AboutPage() {
             {/* Stats Section - Minimal */}
             <section className="section-padding">
                 <div className="container-custom">
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-12 lg:gap-16 pt-8 border-t border-foreground/10">
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-12 lg:gap-16">
                         <div>
                             <div className="text-3xl md:text-4xl font-light text-foreground mb-2">10+</div>
                             <div className="text-xs uppercase tracking-wider text-foreground/50">Years Experience</div>
