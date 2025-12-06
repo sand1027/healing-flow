@@ -1,26 +1,312 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
 @import "tailwindcss";
+@import "tw-animate-css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: 'Inter', var(--font-geist-sans);
+  --font-serif: 'Playfair Display', serif;
   --font-mono: var(--font-geist-mono);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+:root {
+  /* Therapeutic Color Palette */
+  --radius: 0.75rem;
+
+  /* Sage Green Primary - Calming and healing */
+  --primary: 142 45% 45%;
+  --primary-foreground: 0 0% 100%;
+
+  /* Soft Blue Secondary - Trust and serenity */
+  --secondary: 200 35% 92%;
+  --secondary-foreground: 200 45% 25%;
+
+  /* Warm Beige Background - Comfort and warmth */
+  --background: 40 20% 97%;
+  --foreground: 200 15% 15%;
+
+  /* Card with subtle elevation */
+  --card: 0 0% 100%;
+  --card-foreground: 200 15% 15%;
+
+  /* Popover */
+  --popover: 0 0% 100%;
+  --popover-foreground: 200 15% 15%;
+
+  /* Muted - Soft gray tones */
+  --muted: 200 15% 94%;
+  --muted-foreground: 200 10% 45%;
+
+  /* Accent - Soft lavender for highlights */
+  --accent: 260 30% 92%;
+  --accent-foreground: 260 45% 30%;
+
+  /* Destructive - Soft coral for errors */
+  --destructive: 0 50% 60%;
+
+  /* Borders and inputs */
+  --border: 200 15% 88%;
+  --input: 200 15% 88%;
+  --ring: 142 45% 45%;
+
+  /* Chart colors - therapeutic palette */
+  --chart-1: 142 45% 55%;
+  --chart-2: 200 45% 55%;
+  --chart-3: 260 40% 60%;
+  --chart-4: 30 50% 65%;
+  --chart-5: 180 40% 60%;
+
+  /* Sidebar */
+  --sidebar: 0 0% 100%;
+  --sidebar-foreground: 200 15% 15%;
+  --sidebar-primary: 142 45% 45%;
+  --sidebar-primary-foreground: 0 0% 100%;
+  --sidebar-accent: 200 35% 92%;
+  --sidebar-accent-foreground: 200 45% 25%;
+  --sidebar-border: 200 15% 88%;
+  --sidebar-ring: 142 45% 45%;
+}
+
+.dark {
+  /* Dark mode - Deep calming tones */
+  --background: 200 20% 8%;
+  --foreground: 200 10% 95%;
+
+  --card: 200 20% 12%;
+  --card-foreground: 200 10% 95%;
+
+  --popover: 200 20% 12%;
+  --popover-foreground: 200 10% 95%;
+
+  --primary: 142 45% 55%;
+  --primary-foreground: 200 20% 8%;
+
+  --secondary: 200 25% 20%;
+  --secondary-foreground: 200 10% 95%;
+
+  --muted: 200 20% 18%;
+  --muted-foreground: 200 10% 65%;
+
+  --accent: 260 30% 25%;
+  --accent-foreground: 200 10% 95%;
+
+  --destructive: 0 50% 50%;
+
+  --border: 200 20% 20%;
+  --input: 200 20% 20%;
+  --ring: 142 45% 55%;
+
+  --chart-1: 142 45% 60%;
+  --chart-2: 200 45% 60%;
+  --chart-3: 260 40% 65%;
+  --chart-4: 30 50% 70%;
+  --chart-5: 180 40% 65%;
+
+  --sidebar: 200 20% 12%;
+  --sidebar-foreground: 200 10% 95%;
+  --sidebar-primary: 142 45% 55%;
+  --sidebar-primary-foreground: 200 20% 8%;
+  --sidebar-accent: 200 25% 20%;
+  --sidebar-accent-foreground: 200 10% 95%;
+  --sidebar-border: 200 20% 20%;
+  --sidebar-ring: 142 45% 55%;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    line-height: 1.2;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer utilities {
+
+  /* Glassmorphism effect */
+  .glass {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+  }
+
+  .dark .glass {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  /* Smooth transitions */
+  .transition-smooth {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    background: linear-gradient(135deg, hsl(142 45% 45%) 0%, hsl(200 45% 55%) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Section padding */
+  .section-padding {
+    @apply py-24 md:py-32 lg:py-40;
+  }
+
+  /* Container */
+  .container-custom {
+    @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+}
+
+/* Custom animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+.animate-slide-in-left {
+  animation: slideInLeft 0.6s ease-out forwards;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.6s ease-out forwards;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.6s ease-out forwards;
+}
+
+/* Stagger animation delays */
+.delay-100 {
+  animation-delay: 100ms;
+}
+
+.delay-200 {
+  animation-delay: 200ms;
+}
+
+.delay-300 {
+  animation-delay: 300ms;
+}
+
+.delay-400 {
+  animation-delay: 400ms;
+}
+
+.delay-500 {
+  animation-delay: 500ms;
 }
