@@ -63,7 +63,7 @@ export default function Hero() {
                         </div>
 
                         {/* Minimal Stats Below Image */}
-                        <div className="grid grid-cols-3 gap-8 mt-12 pt-8 border-t border-foreground/10">
+                        <div className="grid grid-cols-3 gap-8 mt-16">
                             <div>
                                 <div className="text-2xl font-light text-foreground mb-1">500+</div>
                                 <div className="text-xs uppercase tracking-wider text-foreground/50">Clients</div>

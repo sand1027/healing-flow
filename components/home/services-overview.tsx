@@ -28,7 +28,7 @@ const services = [
 
 export default function ServicesOverview() {
     return (
-        <section className="section-padding border-t border-foreground/10">
+        <section className="section-padding">
             <div className="container-custom">
                 {/* Section Header - Minimal */}
                 <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-24">

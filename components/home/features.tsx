@@ -29,7 +29,7 @@ const features = [
 
 export default function Features() {
     return (
-        <section className="section-padding border-t border-foreground/10">
+        <section className="section-padding">
             <div className="container-custom">
                 {/* Section Header - Ultra Minimal */}
                 <div className="max-w-4xl mb-24">

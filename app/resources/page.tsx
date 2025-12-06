@@ -86,7 +86,7 @@ export default function ResourcesPage() {
     return (
         <div className="min-h-screen">
             {/* Hero Section - Minimal */}
-            <section className="section-padding border-b border-foreground/10">
+            <section className="section-padding">
                 <div className="container-custom">
                     <div className="max-w-4xl">
                         <span className="text-xs font-medium tracking-[0.2em] uppercase text-foreground/60 mb-6 block">
@@ -105,7 +105,7 @@ export default function ResourcesPage() {
             </section>
 
             {/* Self-Help Tools - Minimal */}
-            <section className="section-padding border-b border-foreground/10">
+            <section className="section-padding">
                 <div className="container-custom">
                     <div className="max-w-4xl mb-24">
                         <span className="text-xs font-medium tracking-[0.2em] uppercase text-foreground/60 mb-6 block">
@@ -142,7 +142,7 @@ export default function ResourcesPage() {
             </section>
 
             {/* Articles & Blog - Minimal */}
-            <section className="section-padding border-b border-foreground/10">
+            <section className="section-padding">
                 <div className="container-custom">
                     <div className="max-w-4xl mb-24">
                         <span className="text-xs font-medium tracking-[0.2em] uppercase text-foreground/60 mb-6 block">
@@ -204,7 +204,7 @@ export default function ResourcesPage() {
                                     If you're experiencing a mental health crisis, please reach out for immediate help.
                                 </p>
                             </div>
-                            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 pt-8 border-t border-foreground/10">
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
                                 <div className="space-y-3">
                                     <h3 className="text-sm font-normal tracking-wide">National Suicide Prevention</h3>
                                     <p className="text-3xl font-light text-foreground">988</p>

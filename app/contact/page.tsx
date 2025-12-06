@@ -71,7 +71,7 @@ export default function ContactPage() {
     return (
         <div className="min-h-screen">
             {/* Hero Section - Minimal */}
-            <section className="section-padding border-b border-foreground/10">
+            <section className="section-padding">
                 <div className="container-custom">
                     <div className="max-w-4xl">
                         <span className="text-xs font-medium tracking-[0.2em] uppercase text-foreground/60 mb-6 block">
@@ -90,7 +90,7 @@ export default function ContactPage() {
             </section>
 
             {/* Contact Form & Info - Minimal */}
-            <section className="section-padding border-b border-foreground/10">
+            <section className="section-padding">
                 <div className="container-custom">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
                         {/* Contact Form */}
@@ -190,7 +190,7 @@ export default function ContactPage() {
                                     Contact Information
                                 </h2>
                                 <div className="space-y-8">
-                                    <div className="flex items-start space-x-6 pb-8 border-b border-foreground/10">
+                                    <div className="flex items-start space-x-6 pb-8">
                                         <div className="w-10 h-10 flex items-center justify-center flex-shrink-0">
                                             <MapPin className="h-5 w-5 text-foreground/40" strokeWidth={1} />
                                         </div>
@@ -204,7 +204,7 @@ export default function ContactPage() {
                                         </div>
                                     </div>
 
-                                    <div className="flex items-start space-x-6 pb-8 border-b border-foreground/10">
+                                    <div className="flex items-start space-x-6 pb-8">
                                         <div className="w-10 h-10 flex items-center justify-center flex-shrink-0">
                                             <Phone className="h-5 w-5 text-foreground/40" strokeWidth={1} />
                                         </div>
@@ -216,7 +216,7 @@ export default function ContactPage() {
                                         </div>
                                     </div>
 
-                                    <div className="flex items-start space-x-6 pb-8 border-b border-foreground/10">
+                                    <div className="flex items-start space-x-6 pb-8">
                                         <div className="w-10 h-10 flex items-center justify-center flex-shrink-0">
                                             <Mail className="h-5 w-5 text-foreground/40" strokeWidth={1} />
                                         </div>
@@ -270,7 +270,7 @@ export default function ContactPage() {
                                 <AccordionItem
                                     key={index}
                                     value={`item-${index}`}
-                                    className="border-b border-foreground/10"
+                                    className="border-foreground/10"
                                 >
                                     <AccordionTrigger className="text-left font-normal tracking-wide hover:no-underline text-base py-6">
                                         {faq.question}
