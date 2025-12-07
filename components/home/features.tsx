@@ -32,11 +32,11 @@ export default function Features() {
         <section className="section-padding">
             <div className="container-custom">
                 {/* Section Header - Ultra Minimal */}
-                <div className="max-w-4xl mb-24">
-                    <span className="text-xs font-medium tracking-[0.2em] uppercase text-foreground/60 mb-6 block">
+                <div className="max-w-4xl mb-32">
+                    <span className="text-xs font-light tracking-[0.3em] uppercase text-foreground/50 mb-8 block">
                         Why Choose Us
                     </span>
-                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-light leading-tight mb-8">
+                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-light leading-tight">
                         Professional Care,
                         <br />
                         Personalized Approach
@@ -44,23 +44,23 @@ export default function Features() {
                 </div>
 
                 {/* Features Grid - Minimal Cards */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 lg:gap-20">
                     {features.map((feature, index) => (
                         <div
                             key={index}
-                            className="group space-y-6"
+                            className="group space-y-8"
                         >
                             {/* Icon - Minimal */}
-                            <div className="w-10 h-10 flex items-center justify-center">
-                                <feature.icon className="h-6 w-6 text-foreground/40 group-hover:text-foreground transition-colors duration-300" strokeWidth={1} />
+                            <div className="w-12 h-12 flex items-center justify-center">
+                                <feature.icon className="h-5 w-5 text-foreground/30 group-hover:text-primary transition-colors duration-500" strokeWidth={0.8} />
                             </div>
 
                             {/* Content */}
-                            <div className="space-y-3">
-                                <h3 className="text-lg font-normal tracking-wide">
+                            <div className="space-y-4">
+                                <h3 className="text-base font-light tracking-wide">
                                     {feature.title}
                                 </h3>
-                                <p className="text-sm text-foreground/60 leading-relaxed font-light">
+                                <p className="text-sm text-foreground/50 leading-loose font-light">
                                     {feature.description}
                                 </p>
                             </div>

@@ -31,9 +31,9 @@ export default function ServicesOverview() {
         <section className="section-padding">
             <div className="container-custom">
                 {/* Section Header - Minimal */}
-                <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-24">
+                <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-12 mb-32">
                     <div className="max-w-2xl">
-                        <span className="text-xs font-medium tracking-[0.2em] uppercase text-foreground/60 mb-6 block">
+                        <span className="text-xs font-light tracking-[0.3em] uppercase text-foreground/50 mb-8 block">
                             Our Services
                         </span>
                         <h2 className="text-4xl md:text-5xl lg:text-6xl font-light leading-tight">
@@ -44,20 +44,20 @@ export default function ServicesOverview() {
                     </div>
                     <Link
                         href="/services"
-                        className="group flex items-center gap-3 text-sm tracking-wide text-foreground/60 hover:text-foreground transition-colors font-light border-b border-foreground/20 hover:border-foreground pb-1"
+                        className="group flex items-center gap-3 text-xs tracking-widest text-foreground/50 hover:text-primary transition-colors font-light uppercase"
                     >
-                        VIEW ALL SERVICES
-                        <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" strokeWidth={1.5} />
+                        View All
+                        <ArrowRight className="h-3 w-3 group-hover:translate-x-1 transition-transform" strokeWidth={1.5} />
                     </Link>
                 </div>
 
                 {/* Services Grid - Ultra Minimal */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-16 lg:gap-20">
                     {services.map((service, index) => (
                         <Link
                             key={index}
                             href={service.href}
-                            className="group block space-y-6"
+                            className="group block space-y-8"
                         >
                             {/* Image - Grayscale */}
                             <div className="relative aspect-[3/4] overflow-hidden">
@@ -65,16 +65,16 @@ export default function ServicesOverview() {
                                     src={service.image}
                                     alt={service.title}
                                     fill
-                                    className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                                    className="object-cover grayscale group-hover:grayscale-0 transition-all duration-1000"
                                 />
                             </div>
 
                             {/* Content */}
-                            <div className="space-y-3">
-                                <h3 className="text-xl font-normal tracking-wide group-hover:text-foreground/60 transition-colors">
+                            <div className="space-y-4">
+                                <h3 className="text-lg font-light tracking-wide group-hover:text-primary transition-colors">
                                     {service.title}
                                 </h3>
-                                <p className="text-sm text-foreground/60 leading-relaxed font-light">
+                                <p className="text-sm text-foreground/50 leading-loose font-light">
                                     {service.description}
                                 </p>
                             </div>

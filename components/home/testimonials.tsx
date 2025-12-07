@@ -24,8 +24,8 @@ export default function Testimonials() {
         <section className="section-padding">
             <div className="container-custom">
                 {/* Section Header */}
-                <div className="max-w-2xl mb-24">
-                    <span className="text-xs font-medium tracking-[0.2em] uppercase text-foreground/60 mb-6 block">
+                <div className="max-w-2xl mb-32">
+                    <span className="text-xs font-light tracking-[0.3em] uppercase text-foreground/50 mb-8 block">
                         Testimonials
                     </span>
                     <h2 className="text-4xl md:text-5xl lg:text-6xl font-light leading-tight">
@@ -36,21 +36,21 @@ export default function Testimonials() {
                 </div>
 
                 {/* Testimonials Grid - Ultra Minimal */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-16 lg:gap-20">
                     {testimonials.map((testimonial, index) => (
                         <div
                             key={index}
-                            className="space-y-8 border-l border-foreground/10 pl-8"
+                            className="space-y-10 border-l border-foreground/5 pl-10"
                         >
                             {/* Quote */}
-                            <p className="text-base text-foreground/80 leading-relaxed font-light">
+                            <p className="text-sm text-foreground/60 leading-loose font-light">
                                 "{testimonial.content}"
                             </p>
 
                             {/* Author */}
-                            <div className="space-y-1">
-                                <p className="text-sm font-normal text-foreground">{testimonial.name}</p>
-                                <p className="text-xs text-foreground/50 uppercase tracking-wider">{testimonial.role}</p>
+                            <div className="space-y-2">
+                                <p className="text-sm font-light text-foreground">{testimonial.name}</p>
+                                <p className="text-xs font-light text-foreground/40 uppercase tracking-widest">{testimonial.role}</p>
                             </div>
                         </div>
                     ))}

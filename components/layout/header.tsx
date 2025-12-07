@@ -30,25 +30,25 @@ export default function Header() {
 
   return (
     <>
-      <header className="sticky top-0 z-50 w-full bg-muted/30 backdrop-blur-sm shadow-md">
+      <header className="sticky top-0 z-50 w-full bg-background/90 backdrop-blur-lg border-b border-border/30">
         <nav className="container-custom">
-          <div className="flex h-16 items-center justify-between">
+          <div className="flex h-24 items-center justify-between">
             {/* Logo */}
             <Link href="/" className="flex items-center space-x-2 z-50">
               <div className="flex items-center">
-                <span className="text-xl md:text-2xl font-light tracking-wide text-foreground">
+                <span className="text-xl md:text-2xl font-light tracking-[0.1em] text-foreground">
                   Healing Flow
                 </span>
               </div>
             </Link>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex md:items-center md:space-x-8">
+            <div className="hidden md:flex md:items-center md:space-x-12">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="text-sm font-normal tracking-wide text-foreground/80 transition-colors hover:text-foreground"
+                  className="text-xs font-light tracking-widest uppercase text-foreground/50 transition-colors hover:text-primary"
                 >
                   {link.label}
                 </Link>
@@ -59,7 +59,8 @@ export default function Header() {
             <div className="hidden md:flex md:items-center md:space-x-4">
               <Button
                 asChild
-                className="text-sm font-normal tracking-wide px-8 h-11 rounded-none bg-foreground text-background hover:bg-foreground/90"
+                style={{ backgroundColor: '#79C7C5', color: '#FFFFFF' }}
+                className="text-xs font-light tracking-wider px-8 h-10 rounded-full hover:opacity-90 transition-all uppercase"
               >
                 <Link href="/contact">Book Session</Link>
               </Button>
