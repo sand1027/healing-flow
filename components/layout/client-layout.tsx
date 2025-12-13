@@ -17,8 +17,20 @@ export default function ClientLayout({
   const pathname = usePathname();
   const isEntryPage = pathname === "/";
   const [sidebarWidth, setSidebarWidth] = useState("56"); // Default: w-56 = 14rem = 224px
+  const [isDesktop, setIsDesktop] = useState(false);
 
   useEffect(() => {
+    // Check if we're on desktop (md breakpoint = 768px)
+    const checkDesktop = () => {
+      setIsDesktop(window.innerWidth >= 768);
+    };
+
+    // Initial check
+    checkDesktop();
+
+    // Listen for window resize
+    window.addEventListener("resize", checkDesktop);
+
     // Check sidebar collapsed state
     const savedState = localStorage.getItem("sidebarCollapsed");
     if (savedState === "true") {
@@ -42,6 +54,7 @@ export default function ClientLayout({
     window.addEventListener("sidebarToggle", handleStorageChange);
 
     return () => {
+      window.removeEventListener("resize", checkDesktop);
       window.removeEventListener("storage", handleStorageChange);
       window.removeEventListener("sidebarToggle", handleStorageChange);
     };
@@ -58,7 +71,9 @@ export default function ClientLayout({
       )}
       <main 
         className={!isEntryPage ? `pt-[57px] md:pt-0 min-h-screen transition-all duration-300 ease-in-out` : ""}
-        style={!isEntryPage ? { marginLeft: `calc(${sidebarWidth} * 0.25rem)` } : {}}
+        style={!isEntryPage && isDesktop ? { 
+          marginLeft: `calc(${sidebarWidth} * 0.25rem)` 
+        } : {}}
       >
         {children}
       </main>
