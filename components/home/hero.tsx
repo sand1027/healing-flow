@@ -5,41 +5,34 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/lib/language-context";
 import { translations } from "@/lib/translations";
+import { ScrollIndicator } from "@/components/ui/scroll-indicator";
 
 export default function Hero() {
     const { lang } = useLanguage();
     const t = translations[lang];
     return (
-        <section className="relative min-h-screen flex items-center bg-background py-20 md:py-24">
+        <section className="relative min-h-screen flex items-center bg-background py-16 md:py-20">
             {/* Content */}
             <div className="container-custom relative z-10 w-full">
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-20 lg:gap-24 items-center">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
                     {/* Left Column - Text Content */}
-                    <div className="lg:col-span-6 space-y-12">
-                        {/* Small Label */}
-                        <div className="inline-block">
-                            <span className="text-xs font-light tracking-[0.3em] uppercase text-foreground/50">
-                                Mental Wellness
-                            </span>
-                        </div>
-
-                        {/* Main Headline - Ultra Minimal */}
-                        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-light leading-[1.1] tracking-tighter text-foreground">
+                    <div className="space-y-8">
+                        {/* Main Headline - Clean & Simple */}
+                        <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-light leading-[1.1] tracking-tight text-foreground">
                             {t.findYourInnerPeace}
                         </h1>
 
                         {/* Subheadline */}
-                        <p className="text-sm sm:text-base md:text-lg text-foreground/50 leading-loose font-light max-w-lg">
+                        <p className="text-base md:text-lg text-foreground/60 leading-relaxed font-light max-w-xl">
                             {t.professionalTherapy}
                         </p>
 
-                        {/* CTA Buttons - Minimal Style */}
-                        <div className="flex flex-col sm:flex-row gap-4 pt-8">
+                        {/* CTA Buttons - Simple */}
+                        <div className="flex flex-col sm:flex-row gap-3 pt-4">
                             <Button
                                 size="lg"
                                 asChild
-                                style={{ backgroundColor: '#79C7C5', color: '#FFFFFF' }}
-                                className="text-xs font-light tracking-wider px-6 sm:px-8 h-11 rounded-full hover:opacity-90 transition-all uppercase"
+                                className="bg-primary text-primary-foreground hover:bg-primary/90 text-sm font-light px-8 h-12 rounded-full transition-all"
                             >
                                 <Link href="/contact">{t.startYourJourney}</Link>
                             </Button>
@@ -47,7 +40,7 @@ export default function Hero() {
                                 size="lg"
                                 variant="ghost"
                                 asChild
-                                className="text-xs font-light tracking-wider h-11 rounded-full hover:bg-accent/30 transition-all px-6 sm:px-8 uppercase text-foreground/60 hover:text-foreground"
+                                className="text-sm font-light h-12 rounded-full hover:bg-secondary/50 transition-all text-foreground/70 hover:text-foreground"
                             >
                                 <Link href="/about">{t.learnMore}</Link>
                             </Button>
@@ -55,19 +48,23 @@ export default function Hero() {
                     </div>
 
                     {/* Right Column - Image */}
-                    <div className="lg:col-span-6">
-                        <div className="relative aspect-[3/4] overflow-hidden max-h-[60vh]">
+                    <div className="hidden lg:block">
+                        <div className="relative aspect-[3/4] overflow-hidden rounded-lg">
                             <Image
                                 src="/images/hero-minimal.png"
                                 alt="Peaceful meditation"
                                 fill
-                                className="object-cover grayscale hover:grayscale-0 transition-all duration-1000"
+                                className="object-cover"
                                 priority
                                 quality={95}
                             />
                         </div>
                     </div>
                 </div>
+            </div>
+            {/* Scroll Indicator - Only visible on mobile */}
+            <div className="md:hidden">
+                <ScrollIndicator />
             </div>
         </section>
     );

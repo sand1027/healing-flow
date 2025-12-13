@@ -1,82 +1,89 @@
-const testimonials = [
-  {
-    name: "Sarah Johnson",
-    role: "Marketing Professional",
-    content:
-      "Healing Flow has been life-changing. The therapists are incredibly compassionate and helped me work through anxiety I've struggled with for years.",
-  },
-  {
-    name: "Michael Chen",
-    role: "Software Engineer",
-    content:
-      "The flexibility of online sessions made it easy to prioritize my mental health. My therapist provided practical tools I use every day.",
-  },
-  {
-    name: "Emily Rodriguez",
-    role: "Teacher",
-    content:
-      "After trying several options, I found my perfect match at Healing Flow. The personalized approach made all the difference in my healing journey.",
-  },
-  {
-    name: "David Thompson",
-    role: "Entrepreneur",
-    content:
-      "The couples counseling sessions helped us reconnect and communicate better. We're stronger than ever now.",
-  },
-  {
-    name: "Lisa Anderson",
-    role: "Nurse",
-    content:
-      "Dealing with work stress was overwhelming. The stress management techniques I learned here have transformed my life.",
-  },
-  {
-    name: "James Wilson",
-    role: "Student",
-    content:
-      "As a college student, I was struggling with depression. The support I received here was exactly what I needed.",
-  },
-];
+"use client";
+
+import { useLanguage } from "@/lib/language-context";
+import { translations } from "@/lib/translations";
+import { ScrollIndicator } from "@/components/ui/scroll-indicator";
 
 export default function TestimonialsPage() {
-  return (
-    <div className="min-h-screen">
-      <section className="section-padding">
-        <div className="container-custom">
-          <div className="max-w-4xl mb-16">
-            <span className="text-xs font-medium tracking-[0.2em] uppercase text-foreground/60 mb-6 block">
-              Testimonials
-            </span>
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-light leading-tight mb-8">
-              Real Stories,
-              <br />
-              <span className="font-normal">Real Healing</span>
-            </h1>
-            <p className="text-lg md:text-xl text-foreground/60 leading-relaxed font-light max-w-2xl">
-              Hear from those who have walked the path to wellness with us.
-            </p>
-          </div>
+    const { lang } = useLanguage();
+    const t = translations[lang];
+    
+    const testimonials = [
+        {
+            name: "Sarah Johnson",
+            role: t.marketingProfessional,
+            content: t.testimonial1,
+        },
+        {
+            name: "Michael Chen",
+            role: t.softwareEngineer,
+            content: t.testimonial2,
+        },
+        {
+            name: "Emily Rodriguez",
+            role: t.teacher,
+            content: t.testimonial3,
+        },
+        {
+            name: "David Thompson",
+            role: t.entrepreneur,
+            content: t.testimonial4,
+        },
+        {
+            name: "Lisa Anderson",
+            role: t.nurse,
+            content: t.testimonial5,
+        },
+        {
+            name: "James Wilson",
+            role: t.student,
+            content: t.testimonial6,
+        },
+    ];
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-16">
-            {testimonials.map((testimonial, index) => (
-              <div
-                key={index}
-                className="space-y-6 border-l border-foreground/10 pl-8 py-4"
-              >
-                <p className="text-base text-foreground/70 leading-relaxed font-light">
-                  "{testimonial.content}"
-                </p>
-                <div className="space-y-2">
-                  <p className="text-sm font-light text-foreground">{testimonial.name}</p>
-                  <p className="text-xs font-light text-foreground/50 uppercase tracking-wider">
-                    {testimonial.role}
-                  </p>
+    return (
+        <div className="min-h-screen bg-background">
+            {/* Hero Section - Full Screen */}
+            <section className="min-h-screen flex items-center py-16 md:py-24 relative">
+                <div className="container-custom w-full">
+                    <div className="max-w-4xl">
+                        <span className="text-xs uppercase tracking-[0.2em] text-foreground/60 mb-6 block font-light">
+                            {t.testimonials}
+                        </span>
+                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-light leading-tight mb-6 text-foreground">
+                            {t.realStories}
+                        </h1>
+                        <p className="text-base md:text-lg text-foreground/60 leading-relaxed font-light max-w-2xl">
+                            {t.hearFromThose}
+                        </p>
+                    </div>
                 </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-    </div>
-  );
-}
+                <ScrollIndicator />
+            </section>
 
+            {/* Content Section */}
+            <section className="py-16 md:py-24 bg-background">
+                <div className="container-custom">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
+                        {testimonials.map((testimonial, index) => (
+                            <div
+                                key={index}
+                                className="space-y-6 p-6 bg-white/50 rounded-lg border-l-4 border-primary/30"
+                            >
+                                <p className="text-sm text-foreground/70 leading-relaxed font-light">
+                                    "{testimonial.content}"
+                                </p>
+                                <div className="space-y-1 pt-4 border-t border-border/30">
+                                    <p className="text-sm font-light text-foreground">{testimonial.name}</p>
+                                    <p className="text-xs font-light text-foreground/50">
+                                        {testimonial.role}
+                                    </p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+        </div>
+    );
+}

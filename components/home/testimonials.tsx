@@ -25,36 +25,31 @@ export default function Testimonials() {
         },
     ];
     return (
-        <section className="section-padding">
+        <section className="py-20 md:py-28 bg-accent/20">
             <div className="container-custom">
-                {/* Section Header */}
-                <div className="max-w-2xl mb-32">
-                    <span className="text-xs font-light tracking-[0.3em] uppercase text-foreground/50 mb-8 block">
-                        {t.testimonials}
-                    </span>
-                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-light leading-tight">
-                        {t.realStories},
-                        <br />
-                        {t.realHealing}
+                {/* Section Header - Simple */}
+                <div className="max-w-2xl mb-16 md:mb-20">
+                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-light leading-tight text-foreground">
+                        {t.realStories}
                     </h2>
                 </div>
 
-                {/* Testimonials Grid - Ultra Minimal */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-16 lg:gap-20">
+                {/* Testimonials Grid - Clean */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
                     {testimonials.map((testimonial, index) => (
                         <div
                             key={index}
-                            className="space-y-10 border-l border-foreground/5 pl-10"
+                            className="space-y-6 p-6 bg-white/50 rounded-lg"
                         >
                             {/* Quote */}
-                            <p className="text-sm text-foreground/60 leading-loose font-light">
+                            <p className="text-sm text-foreground/70 leading-relaxed font-light">
                                 "{testimonial.content}"
                             </p>
 
                             {/* Author */}
-                            <div className="space-y-2">
+                            <div className="space-y-1 pt-4 border-t border-border/30">
                                 <p className="text-sm font-light text-foreground">{testimonial.name}</p>
-                                <p className="text-xs font-light text-foreground/40 uppercase tracking-widest">{testimonial.role}</p>
+                                <p className="text-xs font-light text-foreground/50">{testimonial.role}</p>
                             </div>
                         </div>
                     ))}

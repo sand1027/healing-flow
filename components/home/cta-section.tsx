@@ -9,28 +9,25 @@ export default function CTASection() {
     const { lang } = useLanguage();
     const t = translations[lang];
     return (
-        <section className="section-padding bg-accent/10">
+        <section className="py-20 md:py-28 bg-primary/5">
             <div className="container-custom">
-                <div className="max-w-4xl mx-auto text-center space-y-16 py-24">
+                <div className="max-w-3xl mx-auto text-center space-y-8">
                     {/* Heading */}
-                    <h2 className="text-5xl md:text-6xl lg:text-7xl font-light leading-tight">
-                        {t.readyToBegin}
-                        <br />
-                        <span className="italic">{t.yourJourney}</span>
+                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-light leading-tight text-foreground">
+                        {t.readyToBegin} {t.yourJourney}
                     </h2>
 
                     {/* Subtext */}
-                    <p className="text-base md:text-lg text-foreground/50 font-light max-w-2xl mx-auto leading-loose">
+                    <p className="text-base md:text-lg text-foreground/60 font-light max-w-xl mx-auto leading-relaxed">
                         {t.takeFirstStep}
                     </p>
 
-                    {/* CTA Button - Minimal */}
+                    {/* CTA Button - Simple */}
                     <div className="pt-4">
                         <Button
                             size="lg"
                             asChild
-                            style={{ backgroundColor: '#79C7C5', color: '#FFFFFF' }}
-                            className="text-xs font-light tracking-wider px-10 h-11 rounded-full hover:opacity-90 transition-all uppercase"
+                            className="bg-primary text-primary-foreground hover:bg-primary/90 text-sm font-light px-10 h-12 rounded-full transition-all"
                         >
                             <Link href="/contact">{t.bookASession}</Link>
                         </Button>

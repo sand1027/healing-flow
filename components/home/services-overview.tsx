@@ -31,51 +31,48 @@ export default function ServicesOverview() {
         },
     ];
     return (
-        <section className="section-padding">
+        <section className="py-20 md:py-28 bg-background">
             <div className="container-custom">
-                {/* Section Header - Minimal */}
-                <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-12 mb-32">
+                {/* Section Header - Simple */}
+                <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-16 md:mb-20">
                     <div className="max-w-2xl">
-                        <span className="text-xs font-light tracking-[0.3em] uppercase text-foreground/50 mb-8 block">
-                            {t.ourServices}
-                        </span>
-                        <h2 className="text-4xl md:text-5xl lg:text-6xl font-light leading-tight">
+                        <h2 className="text-4xl md:text-5xl lg:text-6xl font-light leading-tight text-foreground">
                             {t.comprehensiveMentalHealthSupport}
                         </h2>
                     </div>
                     <Link
                         href="/services"
-                        className="group flex items-center gap-3 text-xs tracking-widest text-foreground/50 hover:text-primary transition-colors font-light uppercase"
+                        className="group flex items-center gap-2 text-sm text-foreground/60 hover:text-primary transition-colors font-light"
                     >
                         {t.viewAll}
-                        <ArrowRight className="h-3 w-3 group-hover:translate-x-1 transition-transform" strokeWidth={1.5} />
+                        <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" strokeWidth={1.5} />
                     </Link>
                 </div>
 
-                {/* Services Grid - Ultra Minimal */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-16 lg:gap-20">
+                {/* Services Grid - Clean */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
                     {services.map((service, index) => (
                         <Link
                             key={index}
                             href={service.href}
-                            className="group block space-y-8"
+                            className="group block space-y-4"
                         >
-                            {/* Image - Grayscale */}
-                            <div className="relative aspect-[3/4] overflow-hidden">
+                            {/* Image - Simple */}
+                            <div className="relative aspect-[4/5] overflow-hidden rounded-lg bg-accent/30">
                                 <Image
                                     src={service.image}
                                     alt={service.title}
                                     fill
-                                    className="object-cover grayscale group-hover:grayscale-0 transition-all duration-1000"
+                                    className="object-cover group-hover:scale-105 transition-transform duration-500"
                                 />
                             </div>
 
                             {/* Content */}
-                            <div className="space-y-4">
-                                <h3 className="text-lg font-light tracking-wide group-hover:text-primary transition-colors">
+                            <div className="space-y-2">
+                                <h3 className="text-xl font-light text-foreground group-hover:text-primary transition-colors">
                                     {service.title}
                                 </h3>
-                                <p className="text-sm text-foreground/50 leading-loose font-light">
+                                <p className="text-sm text-foreground/60 leading-relaxed font-light">
                                     {service.description}
                                 </p>
                             </div>
