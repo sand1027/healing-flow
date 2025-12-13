@@ -1,37 +1,41 @@
-const testimonials = [
-    {
-        name: "Sarah Johnson",
-        role: "Marketing Professional",
-        content:
-            "Healing Flow has been life-changing. The therapists are incredibly compassionate and helped me work through anxiety I've struggled with for years.",
-    },
-    {
-        name: "Michael Chen",
-        role: "Software Engineer",
-        content:
-            "The flexibility of online sessions made it easy to prioritize my mental health. My therapist provided practical tools I use every day.",
-    },
-    {
-        name: "Emily Rodriguez",
-        role: "Teacher",
-        content:
-            "After trying several options, I found my perfect match at Healing Flow. The personalized approach made all the difference in my healing journey.",
-    },
-];
+"use client";
+
+import { useLanguage } from "@/lib/language-context";
+import { translations } from "@/lib/translations";
 
 export default function Testimonials() {
+    const { lang } = useLanguage();
+    const t = translations[lang];
+    
+    const testimonials = [
+        {
+            name: "Sarah Johnson",
+            role: t.marketingProfessional,
+            content: t.testimonial1,
+        },
+        {
+            name: "Michael Chen",
+            role: t.softwareEngineer,
+            content: t.testimonial2,
+        },
+        {
+            name: "Emily Rodriguez",
+            role: t.teacher,
+            content: t.testimonial3,
+        },
+    ];
     return (
         <section className="section-padding">
             <div className="container-custom">
                 {/* Section Header */}
                 <div className="max-w-2xl mb-32">
                     <span className="text-xs font-light tracking-[0.3em] uppercase text-foreground/50 mb-8 block">
-                        Testimonials
+                        {t.testimonials}
                     </span>
                     <h2 className="text-4xl md:text-5xl lg:text-6xl font-light leading-tight">
-                        Real Stories,
+                        {t.realStories},
                         <br />
-                        Real Healing
+                        {t.realHealing}
                     </h2>
                 </div>
 

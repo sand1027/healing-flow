@@ -1,8 +1,14 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { useLanguage } from "@/lib/language-context";
+import { translations } from "@/lib/translations";
 
 export default function Hero() {
+    const { lang } = useLanguage();
+    const t = translations[lang];
     return (
         <section className="relative min-h-screen flex items-center bg-background py-20 md:py-24">
             {/* Content */}
@@ -18,15 +24,13 @@ export default function Hero() {
                         </div>
 
                         {/* Main Headline - Ultra Minimal */}
-                        <h1 className="text-6xl md:text-7xl lg:text-8xl font-light leading-[1.1] tracking-tighter text-foreground">
-                            Find Your
-                            <br />
-                            Inner Peace
+                        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-light leading-[1.1] tracking-tighter text-foreground">
+                            {t.findYourInnerPeace}
                         </h1>
 
                         {/* Subheadline */}
-                        <p className="text-base md:text-lg text-foreground/50 leading-loose font-light max-w-lg">
-                            Professional therapy designed for your unique journey to mental wellness.
+                        <p className="text-sm sm:text-base md:text-lg text-foreground/50 leading-loose font-light max-w-lg">
+                            {t.professionalTherapy}
                         </p>
 
                         {/* CTA Buttons - Minimal Style */}
@@ -35,17 +39,17 @@ export default function Hero() {
                                 size="lg"
                                 asChild
                                 style={{ backgroundColor: '#79C7C5', color: '#FFFFFF' }}
-                                className="text-xs font-light tracking-wider px-8 h-11 rounded-full hover:opacity-90 transition-all uppercase"
+                                className="text-xs font-light tracking-wider px-6 sm:px-8 h-11 rounded-full hover:opacity-90 transition-all uppercase"
                             >
-                                <Link href="/contact">Start Your Journey</Link>
+                                <Link href="/contact">{t.startYourJourney}</Link>
                             </Button>
                             <Button
                                 size="lg"
                                 variant="ghost"
                                 asChild
-                                className="text-xs font-light tracking-wider h-11 rounded-full hover:bg-accent/30 transition-all px-8 uppercase text-foreground/60 hover:text-foreground"
+                                className="text-xs font-light tracking-wider h-11 rounded-full hover:bg-accent/30 transition-all px-6 sm:px-8 uppercase text-foreground/60 hover:text-foreground"
                             >
-                                <Link href="/about">Learn More</Link>
+                                <Link href="/about">{t.learnMore}</Link>
                             </Button>
                         </div>
                     </div>

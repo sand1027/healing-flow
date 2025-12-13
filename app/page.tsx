@@ -1,17 +1,97 @@
-import Hero from "@/components/home/hero";
-import Features from "@/components/home/features";
-import ServicesOverview from "@/components/home/services-overview";
-import Testimonials from "@/components/home/testimonials";
-import CTASection from "@/components/home/cta-section";
+"use client";
 
-export default function Home() {
+import Link from "next/link";
+import Image from "next/image";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+
+export default function EntryPage() {
+  const [isExiting, setIsExiting] = useState(false);
+  const router = useRouter();
+
+  const handlePortalClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setIsExiting(true);
+    setTimeout(() => {
+      router.push("/home");
+    }, 600); // Match animation duration
+  };
+
   return (
-    <>
-      <Hero />
-      <Features />
-      <ServicesOverview />
-      <Testimonials />
-      <CTASection />
-    </>
+    <div className={`fixed inset-0 w-full h-full overflow-hidden bg-white rounded-lg transition-all duration-[600ms] ease-in-out ${
+      isExiting ? "opacity-0 scale-105" : "opacity-100 scale-100"
+    }`}>
+      {/* Upper Section - Grey Sky with Birds (40%) */}
+      <div className="relative h-[40vh] bg-[#E5E5E5] overflow-hidden w-full">
+        {/* Birds Image - covering the upper section */}
+        <div className="absolute inset-0 w-full h-full">
+          <Image
+            src="/images/birds.png"
+            alt="Birds in flight"
+            fill
+            className="object-cover"
+            priority
+            quality={95}
+            style={{ mixBlendMode: 'multiply', objectPosition: 'left bottom' }}
+          />
+        </div>
+      </div>
+
+      {/* Dividing Line */}
+      <div className="h-px bg-gray-300"></div>
+
+      {/* Lower Section - White Background (60%) */}
+      <div className="relative h-[60vh] bg-white flex flex-col w-full">
+        {/* Circular Emblem - Top center (Clickable) */}
+        <button
+          onClick={handlePortalClick}
+          className="absolute top-8 left-1/2 transform -translate-x-1/2 flex items-center justify-center cursor-pointer z-10 group"
+        >
+          <div className="relative transition-all duration-500 group-hover:scale-110 group-active:scale-95">
+            {/* Outer black ring (thicker) */}
+            <div className="w-16 h-16 rounded-full border-[3px] border-black transition-all duration-500 group-hover:border-gray-700"></div>
+            {/* White ring (thin) */}
+            <div className="absolute inset-[3px] w-[calc(100%-6px)] h-[calc(100%-6px)] rounded-full bg-white border border-white"></div>
+            {/* Inner black circle (solid) */}
+            <div className="absolute inset-4 w-8 h-8 rounded-full bg-black transition-all duration-500 group-hover:bg-gray-800"></div>
+            {/* Ripple effect on click */}
+            {isExiting && (
+              <div className="absolute inset-0 rounded-full bg-black animate-ping opacity-75"></div>
+            )}
+          </div>
+        </button>
+
+        {/* Text Content - Centered */}
+        <div className="flex-1 flex flex-col items-center justify-center mt-16 space-y-4">
+          {/* Main Title and Subtitle */}
+          <div className="flex items-baseline gap-2 relative">
+            <h1 
+              className="text-5xl md:text-6xl font-normal text-black"
+              style={{ 
+                fontFamily: "'Playfair Display', serif",
+                fontStyle: "italic",
+                letterSpacing: "0.02em"
+              }}
+            >
+              Healing flow
+            </h1>
+            <span 
+              className="text-sm md:text-base text-gray-500 font-light absolute top-[1.2em] left-[calc(100%+0.75rem)] whitespace-nowrap"
+              style={{ fontFamily: "'Futura', 'Inter', sans-serif" }}
+            >
+              Inner alchemy
+            </span>
+          </div>
+
+          {/* Name */}
+          <p 
+            className="text-sm md:text-base text-gray-500 font-light"
+            style={{ fontFamily: "'Futura', 'Inter', sans-serif" }}
+          >
+            Saritha Thulasidas
+          </p>
+        </div>
+      </div>
+    </div>
   );
 }

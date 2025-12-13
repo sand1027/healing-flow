@@ -1,45 +1,47 @@
-import { Heart, Shield, Users, Sparkles } from "lucide-react";
+"use client";
 
-const features = [
-    {
-        icon: Heart,
-        title: "Compassionate Care",
-        description:
-            "A safe, non-judgmental space where you can explore your thoughts freely.",
-    },
-    {
-        icon: Shield,
-        title: "Confidential",
-        description:
-            "Your privacy is protected by professional standards and complete confidentiality.",
-    },
-    {
-        icon: Users,
-        title: "Expert Therapists",
-        description:
-            "Licensed professionals specializing in various therapeutic approaches.",
-    },
-    {
-        icon: Sparkles,
-        title: "Flexible Options",
-        description:
-            "Convenient online and in-person sessions that fit your lifestyle.",
-    },
-];
+import { Heart, Shield, Users, Sparkles } from "lucide-react";
+import { useLanguage } from "@/lib/language-context";
+import { translations } from "@/lib/translations";
 
 export default function Features() {
+    const { lang } = useLanguage();
+    const t = translations[lang];
+    
+    const features = [
+        {
+            icon: Heart,
+            title: t.compassionateCare,
+            description: t.compassionateCareDesc,
+        },
+        {
+            icon: Shield,
+            title: t.confidential,
+            description: t.confidentialDesc,
+        },
+        {
+            icon: Users,
+            title: t.expertTherapists,
+            description: t.expertTherapistsDesc,
+        },
+        {
+            icon: Sparkles,
+            title: t.flexibleOptions,
+            description: t.flexibleOptionsDesc,
+        },
+    ];
     return (
         <section className="section-padding">
             <div className="container-custom">
                 {/* Section Header - Ultra Minimal */}
                 <div className="max-w-4xl mb-32">
                     <span className="text-xs font-light tracking-[0.3em] uppercase text-foreground/50 mb-8 block">
-                        Why Choose Us
+                        {t.whyChooseUs}
                     </span>
                     <h2 className="text-4xl md:text-5xl lg:text-6xl font-light leading-tight">
-                        Professional Care,
+                        {t.professionalCare},
                         <br />
-                        Personalized Approach
+                        {t.personalizedApproach}
                     </h2>
                 </div>
 

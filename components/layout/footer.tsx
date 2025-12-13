@@ -1,12 +1,21 @@
+"use client";
+
 import Link from "next/link";
 import { Facebook, Instagram, Twitter, Linkedin, Mail, Phone, MapPin } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
+import { usePathname } from "next/navigation";
+import { useLanguage } from "@/lib/language-context";
+import { translations } from "@/lib/translations";
 
 export default function Footer() {
     const currentYear = new Date().getFullYear();
+    const pathname = usePathname();
+    const isEntryPage = pathname === "/";
+    const { lang } = useLanguage();
+    const t = translations[lang];
 
     return (
-        <footer className="bg-muted/30 border-t border-border">
+        <footer className={`bg-muted/30 border-t border-border ${!isEntryPage ? "md:ml-64" : ""}`}>
             <div className="container-custom section-padding">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
                     {/* Brand Section */}
@@ -15,8 +24,7 @@ export default function Footer() {
                             Healing Flow
                         </h3>
                         <p className="text-sm text-muted-foreground leading-relaxed">
-                            Your journey to mental wellness starts here. Professional,
-                            compassionate care tailored to your unique needs.
+                            {t.yourJourneyFooter}
                         </p>
                         <div className="flex space-x-4">
                             <a
@@ -53,7 +61,7 @@ export default function Footer() {
                     {/* Quick Links */}
                     <div className="space-y-4">
                         <h4 className="text-sm font-semibold uppercase tracking-wider">
-                            Quick Links
+                            {t.quickLinks}
                         </h4>
                         <ul className="space-y-3">
                             <li>
@@ -61,7 +69,7 @@ export default function Footer() {
                                     href="/about"
                                     className="text-sm text-muted-foreground hover:text-primary transition-colors"
                                 >
-                                    About Us
+                                    {t.aboutUs}
                                 </Link>
                             </li>
                             <li>
@@ -69,7 +77,7 @@ export default function Footer() {
                                     href="/services"
                                     className="text-sm text-muted-foreground hover:text-primary transition-colors"
                                 >
-                                    Our Services
+                                    {t.ourServices}
                                 </Link>
                             </li>
                             <li>
@@ -77,7 +85,7 @@ export default function Footer() {
                                     href="/resources"
                                     className="text-sm text-muted-foreground hover:text-primary transition-colors"
                                 >
-                                    Resources
+                                    {t.resources}
                                 </Link>
                             </li>
                             <li>
@@ -85,7 +93,7 @@ export default function Footer() {
                                     href="/contact"
                                     className="text-sm text-muted-foreground hover:text-primary transition-colors"
                                 >
-                                    Contact
+                                    {t.contact}
                                 </Link>
                             </li>
                         </ul>
@@ -94,7 +102,7 @@ export default function Footer() {
                     {/* Services */}
                     <div className="space-y-4">
                         <h4 className="text-sm font-semibold uppercase tracking-wider">
-                            Services
+                            {t.services}
                         </h4>
                         <ul className="space-y-3">
                             <li>
@@ -135,7 +143,7 @@ export default function Footer() {
                     {/* Contact Info */}
                     <div className="space-y-4">
                         <h4 className="text-sm font-semibold uppercase tracking-wider">
-                            Get in Touch
+                            {t.getInTouch}
                         </h4>
                         <ul className="space-y-3">
                             <li className="flex items-start space-x-3">
@@ -173,20 +181,20 @@ export default function Footer() {
                 {/* Bottom Bar */}
                 <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
                     <p className="text-sm text-muted-foreground">
-                        © {currentYear} Healing Flow. All rights reserved.
+                        © {currentYear} Healing Flow. {t.allRightsReserved}.
                     </p>
                     <div className="flex space-x-6">
                         <Link
                             href="/privacy"
                             className="text-sm text-muted-foreground hover:text-primary transition-colors"
                         >
-                            Privacy Policy
+                            {t.privacyPolicy}
                         </Link>
                         <Link
                             href="/terms"
                             className="text-sm text-muted-foreground hover:text-primary transition-colors"
                         >
-                            Terms of Service
+                            {t.termsOfService}
                         </Link>
                     </div>
                 </div>
