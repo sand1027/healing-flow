@@ -2,274 +2,181 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { Check } from "lucide-react";
 import { useLanguage } from "@/lib/language-context";
 import { translations } from "@/lib/translations";
-import { ScrollIndicator } from "@/components/ui/scroll-indicator";
 
 export default function ServicesPage() {
     const { lang } = useLanguage();
     const t = translations[lang];
-    
+
+    // Helper function to parse items and create clickable links
+    const parseItems = (items: string[]) => {
+        return items.map((item, idx) => {
+            // Split by periods and commas to get individual items
+            const parts = item.split(/[.,]/).filter(p => p.trim());
+            return parts.map((part, partIdx) => {
+                const trimmed = part.trim();
+                if (!trimmed) return null;
+                // For now, items are not clickable - user will tell us where to redirect
+                return { text: trimmed, href: "#" }; // Placeholder href
+            }).filter(Boolean);
+        }).flat();
+    };
+
     const services = [
         {
-            id: "individual",
-            title: t.individualTherapy,
-            description: t.oneOnOneSessions,
-            image: "/images/therapy-session.png",
-            features: [
-                t.personalizedTreatmentPlans,
-                t.flexibleSchedulingOptions,
-                t.evidenceBasedApproaches,
-                t.safeConfidentialEnvironment,
-            ],
+            id: "regression",
+            title: t.regressionTherapy,
+            goal: t.regressionTherapyGoal,
+            items: t.regressionTherapyItems,
+            color: "text-amber-600",
+            leftImage: "https://res.cloudinary.com/dchz9rofb/image/upload/v1767004475/healing-flow/eye-6706850_uq5rbc.jpg",
+            rightImage: "https://res.cloudinary.com/dchz9rofb/image/upload/v1767004475/healing-flow/buddha-1550588_a7e3vn.jpg",
         },
         {
-            id: "couples",
-            title: t.couplesCounseling,
-            description: t.strengthenYourRelationship,
-            image: "/images/wellness-abstract.png",
-            features: [
-                t.communicationSkillsTraining,
-                t.conflictResolutionStrategies,
-                t.intimacyAndConnection,
-                t.preMaritalCounseling,
-            ],
+            id: "spiritual",
+            title: t.spiritualTechnology,
+            goal: t.spiritualTechnologyGoal,
+            items: t.spiritualTechnologyItems,
+            color: "text-teal-500",
+            leftImage: "https://res.cloudinary.com/dchz9rofb/image/upload/v1767004478/healing-flow/sheeps-6828766_yhzj8s.jpg",
+            rightImage: "https://res.cloudinary.com/dchz9rofb/image/upload/v1767004477/healing-flow/sheep-1684536_iuwjxe.jpg",
         },
         {
-            id: "group",
-            title: t.groupSessions,
-            description: t.connectWithOthers,
-            image: "/images/hero-meditation.png",
-            features: [
-                t.peerSupportAndConnection,
-                t.sharedExperiences,
-                t.costEffectiveOption,
-                t.variousSpecializedGroups,
-            ],
-        },
-        {
-            id: "online",
-            title: t.onlineSessions,
-            description: t.accessQualityCare,
-            image: "/images/therapy-session.png",
-            features: [
-                t.convenientAndFlexible,
-                t.sameQualityAsInPerson,
-                t.secureVideoPlatform,
-                t.availableNationwide,
-            ],
-        },
-    ];
-
-    const pricingTiers = [
-        {
-            name: t.individualSession,
-            price: "$150",
-            duration: "50 minutes",
-            features: [
-                t.oneOnOneTherapy,
-                t.personalizedTreatment,
-                t.flexibleScheduling,
-                t.progressTracking,
-            ],
-        },
-        {
-            name: t.couplesSession,
-            price: "$200",
-            duration: "75 minutes",
-            features: [
-                t.jointTherapySessions,
-                t.communicationTools,
-                t.relationshipStrategies,
-                t.homeworkAssignments,
-            ],
-            highlighted: true,
-        },
-        {
-            name: t.groupSession,
-            price: "$75",
-            duration: "90 minutes",
-            features: [
-                t.smallGroupSetting,
-                t.peerSupport,
-                t.guidedDiscussions,
-                t.weeklyMeetings,
-            ],
-        },
-    ];
-
-    const processSteps = [
-        {
-            step: "01",
-            title: t.bookConsultation,
-            description: t.scheduleFreeConsultation,
-        },
-        {
-            step: "02",
-            title: t.meetYourTherapist,
-            description: t.connectWithTherapist,
-        },
-        {
-            step: "03",
-            title: t.createYourPlan,
-            description: t.developPersonalizedPlan,
-        },
-        {
-            step: "04",
-            title: t.beginYourJourney,
-            description: t.startYourPath,
+            id: "abhyanga",
+            title: t.abhyangaAyurvedic,
+            subtitle: t.abhyangaAyurvedicSubtitle,
+            goal: t.abhyangaAyurvedicGoal,
+            items: t.abhyangaAyurvedicItems,
+            color: "text-pink-500",
+            leftImage: "https://res.cloudinary.com/dchz9rofb/image/upload/v1767004478/healing-flow/woman-2609115_tinsje.jpg",
+            rightImage: "https://res.cloudinary.com/dchz9rofb/image/upload/v1767004477/healing-flow/head-650878_awrmcq.jpg",
         },
     ];
 
     return (
         <div className="min-h-screen bg-background">
-            {/* Hero Section - Full Screen */}
-            <section className="min-h-screen flex items-center py-16 md:py-24 relative">
-                <div className="container-custom w-full">
-                    <div className="max-w-4xl">
-                        <span className="text-xs uppercase tracking-[0.2em] text-foreground/60 mb-6 block font-light">
-                            {t.services}
-                        </span>
-                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-light leading-tight mb-6 text-foreground">
-                            {t.comprehensiveMentalHealthSupport}
-                        </h1>
-                        <p className="text-base md:text-lg text-foreground/60 leading-relaxed font-light max-w-2xl">
-                            {t.professionalServicesDesigned}
-                        </p>
-                    </div>
-                </div>
-                <ScrollIndicator />
-            </section>
-
-            {/* Services Content Section */}
+            {/* Single-page Services layout */}
             <section className="py-16 md:py-24 bg-background">
-                <div className="container-custom">
-                    {/* Services Detail */}
+                <div className="container-custom pl-8 md:pl-24 lg:pl-32">
+                    {/* Main Title */}
+                    <div className="mb-16">
+                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-light leading-tight text-foreground">
+                            {t.services}
+                        </h1>
+                    </div>
+
+                    {/* Services Blocks */}
                     {services.map((service, index) => (
-                        <section
+                        <div
                             key={service.id}
-                            id={service.id}
-                            className="mb-20 md:mb-28"
+                            className={`mb-16 md:mb-20 ${index !== services.length - 1 ? "border-b border-gray-200 pb-16 md:pb-20" : ""}`}
                         >
-                            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-                                <div className={`space-y-6 ${index % 2 === 1 ? "lg:order-2" : ""}`}>
-                                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-light leading-tight text-foreground">
-                                        {service.title}
-                                    </h2>
-                                    <p className="text-base text-foreground/60 leading-relaxed font-light">
-                                        {service.description}
+                            {/* Service Title */}
+                            <div className="mb-6">
+                                <h2 className={`text-2xl md:text-3xl font-light ${service.color} mb-1`}>
+                                    {service.title}
+                                </h2>
+                                {service.subtitle && (
+                                    <p className="text-sm md:text-base text-foreground/60 font-light mt-1">
+                                        {service.subtitle}
                                     </p>
-                                    <ul className="space-y-3">
-                                        {service.features.map((feature, idx) => (
-                                            <li key={idx} className="flex items-start space-x-3">
-                                                <Check className="h-4 w-4 text-primary mt-1 flex-shrink-0" strokeWidth={1.5} />
-                                                <span className="text-sm text-foreground/60 font-light">{feature}</span>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                    <Button
-                                        size="lg"
-                                        asChild
-                                        className="bg-primary text-primary-foreground hover:bg-primary/90 text-sm font-light px-8 h-12 rounded-full transition-all"
-                                    >
-                                        <Link href="/contact">{t.bookThisService}</Link>
-                                    </Button>
+                                )}
+                            </div>
+
+                            {/* Service Content with Images */}
+                            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                                {/* Left Circular Image */}
+                                <div className="lg:col-span-2 flex justify-center lg:justify-start">
+                                    <div className="relative w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden">
+                                        <Image
+                                            src={service.leftImage}
+                                            alt={service.title}
+                                            fill
+                                            className="object-cover"
+                                        />
+                                    </div>
                                 </div>
-                                <div className={`relative aspect-[3/4] overflow-hidden rounded-lg ${index % 2 === 1 ? "lg:order-1" : ""}`}>
-                                    <Image
-                                        src={service.image}
-                                        alt={service.title}
-                                        fill
-                                        className="object-cover"
-                                    />
+
+                                {/* Center Content */}
+                                <div className="lg:col-span-8 space-y-4">
+                                    {/* Goal */}
+                                    <p className="text-base md:text-lg font-semibold text-foreground leading-relaxed">
+                                        {service.goal}
+                                    </p>
+
+                                    {/* Items List - with clickable links */}
+                                    <ul className="space-y-1.5">
+                                        {service.items.map((item, idx) => {
+                                            // Split by periods to get individual items
+                                            const parts = item.split('.').map(p => p.trim()).filter(p => p);
+                                            return (
+                                                <li key={idx} className="text-sm md:text-base text-foreground/60 font-light leading-relaxed">
+                                                    {parts.map((part, partIdx) => {
+                                                        // Check if part has commas (like "Addictions. Self sabotaging beliefs. Depression")
+                                                        if (part.includes(',')) {
+                                                            const subParts = part.split(',').map(sp => sp.trim()).filter(sp => sp);
+                                                            return (
+                                                                <span key={partIdx}>
+                                                                    {subParts.map((subPart, subIdx) => (
+                                                                        <span key={subIdx}>
+                                                                            {subIdx > 0 && ", "}
+                                                                            <Link
+                                                                                href="#" // Placeholder - user will tell us where to redirect
+                                                                                className="hover:text-foreground hover:underline transition-colors"
+                                                                            >
+                                                                                {subPart}
+                                                                            </Link>
+                                                                        </span>
+                                                                    ))}
+                                                                    {partIdx < parts.length - 1 && ". "}
+                                                                </span>
+                                                            );
+                                                        }
+                                                        // Single item without commas
+                                                        return (
+                                                            <span key={partIdx}>
+                                                                {partIdx > 0 && ". "}
+                                                                <Link
+                                                                    href="#" // Placeholder - user will tell us where to redirect
+                                                                    className="hover:text-foreground hover:underline transition-colors"
+                                                                >
+                                                                    {part}
+                                                                </Link>
+                                                                {partIdx < parts.length - 1 && "."}
+                                                            </span>
+                                                        );
+                                                    })}
+                                                </li>
+                                            );
+                                        })}
+                                    </ul>
+
+                                    {/* More Information Link */}
+                                    <div className="text-right pt-2">
+                                        <Link
+                                            href="/contact"
+                                            className="text-xs md:text-sm text-foreground/40 hover:text-foreground/60 font-light transition-colors"
+                                        >
+                                            {t.moreInformation}
+                                        </Link>
+                                    </div>
+                                </div>
+
+                                {/* Right Circular Image */}
+                                <div className="lg:col-span-2 flex justify-center lg:justify-end">
+                                    <div className="relative w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden">
+                                        <Image
+                                            src={service.rightImage}
+                                            alt={service.title}
+                                            fill
+                                            className="object-cover"
+                                        />
+                                    </div>
                                 </div>
                             </div>
-                        </section>
+                        </div>
                     ))}
-
-                    {/* Pricing Section */}
-                    <section className="mb-20 md:mb-28 bg-secondary/10 py-16 md:py-20">
-                        <div className="max-w-3xl mb-16">
-                            <h2 className="text-4xl md:text-5xl lg:text-6xl font-light leading-tight mb-4 text-foreground">
-                                {t.transparentAffordableCare}
-                            </h2>
-                            <p className="text-base text-foreground/60 leading-relaxed font-light max-w-2xl">
-                                {t.flexiblePaymentOptions}
-                            </p>
-                        </div>
-
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
-                            {pricingTiers.map((tier, index) => (
-                                <div
-                                    key={index}
-                                    className={`space-y-6 p-6 rounded-lg bg-white/50 border ${tier.highlighted ? "border-primary/50" : "border-border/50"}`}
-                                >
-                                    <div className="space-y-3">
-                                        <h3 className="text-xl font-light text-foreground">
-                                            {tier.name}
-                                        </h3>
-                                        <div className="text-4xl font-light text-foreground">
-                                            {tier.price}
-                                        </div>
-                                        <p className="text-xs uppercase tracking-wider text-foreground/50 font-light">
-                                            {tier.duration}
-                                        </p>
-                                    </div>
-                                    <ul className="space-y-3">
-                                        {tier.features.map((feature, idx) => (
-                                            <li key={idx} className="flex items-start space-x-3">
-                                                <Check className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" strokeWidth={1.5} />
-                                                <span className="text-sm text-foreground/60 font-light">
-                                                    {feature}
-                                                </span>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                    <Button
-                                        className={`w-full text-sm font-light h-12 rounded-full transition-all ${
-                                            tier.highlighted
-                                                ? "bg-primary text-primary-foreground hover:bg-primary/90"
-                                                : "bg-transparent border border-border/50 hover:border-primary text-foreground"
-                                        }`}
-                                        asChild
-                                    >
-                                        <Link href="/contact">{t.getStarted}</Link>
-                                    </Button>
-                                </div>
-                            ))}
-                        </div>
-                    </section>
-
-                    {/* Process Section */}
-                    <section className="mb-20 md:mb-28">
-                        <div className="max-w-3xl mb-16">
-                            <h2 className="text-4xl md:text-5xl lg:text-6xl font-light leading-tight text-foreground">
-                                {t.simpleStraightforwardProcess}
-                            </h2>
-                        </div>
-
-                        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-12">
-                            {processSteps.map((item, index) => (
-                                <div key={index} className="space-y-4">
-                                    <div className="w-12 h-12 border border-border/50 rounded-lg flex items-center justify-center bg-primary/5">
-                                        <span className="text-lg font-light text-primary">
-                                            {item.step}
-                                        </span>
-                                    </div>
-                                    <div className="space-y-2">
-                                        <h3 className="text-lg font-light text-foreground">
-                                            {item.title}
-                                        </h3>
-                                        <p className="text-sm text-foreground/60 leading-relaxed font-light">
-                                            {item.description}
-                                        </p>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </section>
                 </div>
             </section>
         </div>

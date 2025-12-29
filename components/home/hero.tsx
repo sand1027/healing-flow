@@ -1,70 +1,47 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/lib/language-context";
 import { translations } from "@/lib/translations";
-import { ScrollIndicator } from "@/components/ui/scroll-indicator";
 
 export default function Hero() {
     const { lang } = useLanguage();
     const t = translations[lang];
+    
     return (
-        <section className="relative min-h-screen flex items-center bg-background py-16 md:py-20">
-            {/* Content */}
-            <div className="container-custom relative z-10 w-full">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-                    {/* Left Column - Text Content */}
-                    <div className="space-y-8">
-                        {/* Main Headline - Clean & Simple */}
-                        <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-light leading-[1.1] tracking-tight text-foreground">
-                            {t.findYourInnerPeace}
-                        </h1>
+        <section className="relative min-h-screen flex items-center bg-background overflow-hidden">
+            {/* Nature Background - Full Screen */}
+            <div className="absolute inset-0 w-full h-full">
+                <Image
+                    src="https://res.cloudinary.com/dchz9rofb/image/upload/v1767004476/healing-flow/fog-5333546_qb9ztn.jpg"
+                    alt="Nature background with fog and trees"
+                    fill
+                    className="object-cover"
+                    priority
+                    quality={95}
+                />
+            </div>
 
-                        {/* Subheadline */}
-                        <p className="text-base md:text-lg text-foreground/60 leading-relaxed font-light max-w-xl">
-                            {t.professionalTherapy}
-                        </p>
-
-                        {/* CTA Buttons - Simple */}
-                        <div className="flex flex-col sm:flex-row gap-3 pt-4">
-                            <Button
-                                size="lg"
-                                asChild
-                                className="bg-primary text-primary-foreground hover:bg-primary/90 text-sm font-light px-8 h-12 rounded-full transition-all"
-                            >
-                                <Link href="/contact">{t.startYourJourney}</Link>
-                            </Button>
-                            <Button
-                                size="lg"
-                                variant="ghost"
-                                asChild
-                                className="text-sm font-light h-12 rounded-full hover:bg-secondary/50 transition-all text-foreground/70 hover:text-foreground"
-                            >
-                                <Link href="/about">{t.learnMore}</Link>
-                            </Button>
-                        </div>
-                    </div>
-
-                    {/* Right Column - Image */}
-                    <div className="hidden lg:block">
-                        <div className="relative aspect-[3/4] overflow-hidden rounded-lg">
-                            <Image
-                                src="/images/hero-minimal.png"
-                                alt="Peaceful meditation"
-                                fill
-                                className="object-cover"
-                                priority
-                                quality={95}
-                            />
-                        </div>
+            {/* Content Overlay */}
+            <div className="relative z-10 w-full h-full min-h-screen flex flex-col">
+                {/* Top Right - Name and Titles */}
+                <div className="absolute top-8 md:top-16 right-6 md:right-12 text-right z-20">
+                    <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-black mb-2">
+                        {t.sarithaThulasidas}
+                    </h1>
+                    <div className="space-y-1 text-sm md:text-base text-black font-normal">
+                        <p>{t.regressionTherapist}</p>
+                        <p>{t.spiritualTechnologyFacilitator}</p>
+                        <p>{t.intuitiveAbhyangaMassuer}</p>
                     </div>
                 </div>
-            </div>
-            {/* Scroll Indicator - Only visible on mobile */}
-            <div className="md:hidden">
-                <ScrollIndicator />
+
+                {/* Middle Right - Quote */}
+                <div className="absolute top-1/2 right-6 md:right-12 transform -translate-y-1/2 text-right z-20 max-w-md">
+                    <p className="text-lg md:text-xl lg:text-2xl font-bold text-black leading-relaxed">
+                        {t.quoteWithStrongRoots}
+                    </p>
+                </div>
             </div>
         </section>
     );

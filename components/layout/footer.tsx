@@ -4,7 +4,6 @@ import Link from "next/link";
 import { Facebook, Instagram, Twitter, Linkedin, Mail, Phone, MapPin } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import { usePathname } from "next/navigation";
-import { useState, useEffect } from "react";
 import { useLanguage } from "@/lib/language-context";
 import { translations } from "@/lib/translations";
 
@@ -14,49 +13,10 @@ export default function Footer() {
     const isEntryPage = pathname === "/";
     const { lang } = useLanguage();
     const t = translations[lang];
-    const [sidebarWidth, setSidebarWidth] = useState("56");
-    const [isDesktop, setIsDesktop] = useState(false);
-
-    useEffect(() => {
-        if (isEntryPage) return;
-        
-        // Check if we're on desktop (md breakpoint = 768px)
-        const checkDesktop = () => {
-            setIsDesktop(window.innerWidth >= 768);
-        };
-
-        // Initial check
-        checkDesktop();
-
-        // Listen for window resize
-        window.addEventListener("resize", checkDesktop);
-        
-        const savedState = localStorage.getItem("sidebarCollapsed");
-        if (savedState === "true") {
-            setSidebarWidth("16");
-        } else {
-            setSidebarWidth("56");
-        }
-
-        const handleStorageChange = () => {
-            const collapsed = localStorage.getItem("sidebarCollapsed") === "true";
-            setSidebarWidth(collapsed ? "16" : "56");
-        };
-
-        window.addEventListener("storage", handleStorageChange);
-        window.addEventListener("sidebarToggle", handleStorageChange);
-
-        return () => {
-            window.removeEventListener("resize", checkDesktop);
-            window.removeEventListener("storage", handleStorageChange);
-            window.removeEventListener("sidebarToggle", handleStorageChange);
-        };
-    }, [isEntryPage]);
 
     return (
         <footer 
-            className={`bg-secondary/10 border-t border-border/50 transition-all duration-300 ease-in-out ${!isEntryPage ? "hidden md:block" : ""}`}
-            style={!isEntryPage && isDesktop ? { marginLeft: `calc(${sidebarWidth} * 0.25rem)` } : {}}
+            className={`bg-secondary/10 border-t border-border/50 ${!isEntryPage ? "hidden md:block" : ""}`}
         >
             <div className="container-custom section-padding">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
