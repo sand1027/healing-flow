@@ -3,7 +3,7 @@ import "./globals.css";
 import ClientLayout from "@/components/layout/client-layout";
 
 export const metadata: Metadata = {
-  title: "Healing Flow - Professional Mental Health Care & Therapy",
+  title: "Healing flow - Trauma coaching and Self-empowerment",
   description:
     "Find peace and healing with Healing Flow's professional mental health services. Expert therapists providing individual therapy, couples counseling, and group sessions.",
   keywords: [
